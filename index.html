@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
-<meta name="yandex-verification" content="93d10a9bf895cec0" />
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Minecraft Java | Все версии + Мобильные</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="yandex-verification" content="93d10a9bf895cec0">
+  
+  <title>Minecraft versions: Скачать Java и Bedrock все версии | Бесплатно</title>
+  <meta name="description" content="Скачивай любую версию Minecraft Java и Bedrock: 1.16.5, 1.20.6, 1.21.5. Подробные описания, скриншоты, гайды по установке. Быстро и бесплатно.">
+  <meta name="keywords" content="скачать майнкрафт, minecraft версии, minecraft java скачать, minecraft 1.16.5, minecraft bedrock">
+  <link rel="canonical" href="https://davlolpop-lang.github.io/minecraft-site/">
+
   <style>
     :root{
       --bg:#070b14;
@@ -57,7 +61,6 @@
       z-index:2;
     }
 
-    /* Верхняя панель + мобильные вкладки */
     .topbar{
       display:flex;
       justify-content:space-between;
@@ -118,7 +121,6 @@
       box-shadow:0 8px 18px rgba(124,156,255,0.3);
     }
 
-    /* Hero универсальный */
     .hero{
       margin:18px 0 20px;
       border-radius:var(--radius-xl);
@@ -202,7 +204,6 @@
       font-weight:600;
     }
 
-    /* секции */
     .section-card{
       margin-top:24px;
       padding:28px;
@@ -313,7 +314,6 @@
     </div>
   </div>
 
-  <!-- ГЛАВНЫЙ БЛОК HERO (динамический) -->
   <div class="hero" id="heroBlock">
     <div class="hero-grid">
       <div class="hero-left">
@@ -343,14 +343,12 @@
     </div>
   </div>
 
-  <!-- СПИСОК ВЕРСИЙ (динамический) -->
   <div id="listSection" class="section-card">
     <h2>📦 Библиотека версий</h2>
     <p id="listSubtitle">Нажми на версию – покажем описание, картинку и кнопку загрузки</p>
     <div class="versions-grid" id="versionsContainer"></div>
   </div>
 
-  <!-- ДЕТАЛИ ВЕРСИИ (скрыт) -->
   <div id="detailSection" class="section-card hidden">
     <div><button class="back-button" id="closeDetailBtn">← Назад к списку</button></div>
     <h2 id="detailVersionTitle">Minecraft 1.16.5</h2>
@@ -368,8 +366,7 @@
     </div>
   </div>
   <div class="footer">
-    📂 Структура: files/1.16.5.zip | images/1.16.5-main.jpg | и другие скриншоты<br>
-    🧩 Для телефонов — Bedrock Edition, отдельные файлы.
+    📂 Файлы скачиваются с Google Drive – моментально и без рекламы.
   </div>
 </div>
 
@@ -389,42 +386,121 @@
     "1.21.20", "1.21.30", "1.21.40"
   ];
 
-  // КОНТЕНТ ДЛЯ КАЖДОЙ ВЕРСИИ (расширенный)
+  // ========== ПРЯМЫЕ ССЫЛКИ Google Drive (вставьте свои ID) ==========
+  // Формат: "https://drive.google.com/uc?export=download&id=ВАШ_ID"
+  const DOWNLOAD_LINKS = {
+    // Java
+    "java_1.16.1": "https://drive.google.com/uc?export=download&id=1cQCOUVP-dXNYMMzsdxLw6Yr7Jbxga5OX", // ваш пример
+    "java_1.16.2": "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "java_1.16.3": "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "java_1.16.4": "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "java_1.16.5": "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "java_1.17":   "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "java_1.17.1": "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "java_1.18":   "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "java_1.18.1": "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "java_1.18.2": "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "java_1.19":   "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "java_1.19.1": "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "java_1.19.2": "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "java_1.19.3": "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "java_1.19.4": "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "java_1.20":   "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "java_1.20.1": "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "java_1.20.2": "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "java_1.20.3": "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "java_1.20.4": "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "java_1.20.5": "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "java_1.20.6": "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "java_1.21":   "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "java_1.21.1": "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "java_1.21.2": "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "java_1.21.3": "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "java_1.21.4": "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "java_1.21.5": "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    // Bedrock
+    "bedrock_1.20.30": "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "bedrock_1.20.40": "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "bedrock_1.20.50": "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "bedrock_1.20.60": "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "bedrock_1.20.70": "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "bedrock_1.21.0":  "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "bedrock_1.21.1":  "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "bedrock_1.21.2":  "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "bedrock_1.21.3":  "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "bedrock_1.21.4":  "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "bedrock_1.21.5":  "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "bedrock_1.21.20": "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "bedrock_1.21.30": "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID",
+    "bedrock_1.21.40": "https://drive.google.com/uc?export=download&id=ЗАМЕНИТЕ_НА_СВОЙ_ID"
+  };
+
+  // База данных версий
   const versionDb = {};
 
-  // Генератор описаний для Java
+  // Заполняем Java версии
   JAVA_VERSIONS.forEach(v => {
     const isPatch = v.split(".").length === 3;
     const major = v.split(".").slice(0,2).join(".");
     versionDb[`java_${v}`] = {
       title: `Minecraft Java Edition ${v}`,
-      desc: isPatch ? `Стабильный патч для ${major}. Исправлены критичные ошибки, улучшена производительность. Рекомендуется для модовых сборок.` 
-                    : `Крупное обновление ${v} — новые блоки, механики и генерация мира. Отличный выбор для выживания.`,
+      desc: isPatch ? `Стабильный патч для ${major}. Исправлены критичные ошибки, улучшена производительность.` 
+                    : `Крупное обновление ${v} — новые блоки, механики и генерация мира.`,
       features: [`📦 Версия ${v}`, `🎮 Java Edition`, `🛠️ Поддержка модов`, isPatch ? `🔧 Багфиксы` : `✨ Новый контент`, `💻 Кроссплатформа`],
-      file: `files/java_${v}.zip`,
+      file: DOWNLOAD_LINKS[`java_${v}`] || "#",
       image: `images/java_${v}-main.jpg`
     };
   });
   // Кастом для популярных
-  versionDb["java_1.16.5"] = { title: "Minecraft 1.16.5 (Nether Update)", desc: "Самая популярная версия! Незерит, пиглины, базальтовые дельты. Огромное количество модов и стабильность.", features: ["🔥 Незеритовый комплект", "👹 Пиглины и брутальные башни", "🌋 Биомы Нижнего мира", "📦 10к+ модов", "💎 Идеально для серверов"], file: "files/java_1.16.5.zip", image: "images/java_1.16.5-main.jpg" };
-  versionDb["java_1.20.6"] = { title: "Minecraft 1.20.6 Trails & Tales", desc: "Археология, вишнёвые рощи, библиотека. Очень атмосферное обновление.", features: ["🏺 Осколки керамики", "🌸 Вишнёвые деревья", "📜 Броня с новыми узорами", "🎨 Декоративные блоки"], file: "files/java_1.20.6.zip", image: "images/java_1.20.6-main.jpg" };
-  versionDb["java_1.21.5"] = { title: "Minecraft 1.21.5 Tricky Trials", desc: "Актуальная версия с испытательными камерами, ветряными зарядами и новыми мобами.", features: ["⚙️ Испытательные спавнеры", "💨 Ветряной заряд", "🛡️ Непобедимые щиты", "✨ Анимации"], file: "files/java_1.21.5.zip", image: "images/java_1.21.5-main.jpg" };
-
-  // Bedrock / Мобильные версии
+  if (versionDb["java_1.16.5"]) {
+    versionDb["java_1.16.5"] = { 
+      title: "Minecraft 1.16.5 (Nether Update)", 
+      desc: "⭐ Самая популярная версия! Незерит, пиглины, базальтовые дельты. Огромное количество модов и стабильность.", 
+      features: ["🔥 Незеритовый комплект", "👹 Пиглины и брутальные башни", "🌋 Биомы Нижнего мира", "📦 10к+ модов", "💎 Идеально для серверов"], 
+      file: DOWNLOAD_LINKS["java_1.16.5"] || "#", 
+      image: "images/java_1.16.5-main.jpg" 
+    };
+  }
+  if (versionDb["java_1.20.6"]) {
+    versionDb["java_1.20.6"] = { 
+      title: "Minecraft 1.20.6 Trails & Tales", 
+      desc: "Археология, вишнёвые рощи, библиотека. Очень атмосферное обновление.", 
+      features: ["🏺 Осколки керамики", "🌸 Вишнёвые деревья", "📜 Броня с новыми узорами", "🎨 Декоративные блоки"], 
+      file: DOWNLOAD_LINKS["java_1.20.6"] || "#", 
+      image: "images/java_1.20.6-main.jpg" 
+    };
+  }
+  if (versionDb["java_1.21.5"]) {
+    versionDb["java_1.21.5"] = { 
+      title: "Minecraft 1.21.5 Tricky Trials", 
+      desc: "Актуальная версия с испытательными камерами, ветряными зарядами и новыми мобами.", 
+      features: ["⚙️ Испытательные спавнеры", "💨 Ветряной заряд", "🛡️ Непобедимые щиты", "✨ Анимации"], 
+      file: DOWNLOAD_LINKS["java_1.21.5"] || "#", 
+      image: "images/java_1.21.5-main.jpg" 
+    };
+  }
+  // Bedrock версии
   BEDROCK_VERSIONS.forEach(v => {
     versionDb[`bedrock_${v}`] = {
       title: `Minecraft Bedrock ${v} (PE)`,
-      desc: `Мобильная версия ${v} для Android / iOS. Кроссплатформа, маркетплейс, мультиплеер по сети. Оптимизирована для телефонов.`,
+      desc: `Мобильная версия ${v} для Android / iOS. Кроссплатформа, маркетплейс, мультиплеер.`,
       features: [`📱 Режим телефона`, `⚡ Render Dragon`, `🎮 Контроллеры + тач`, `🌐 Кроссплей`, `🧩 Аддоны`],
-      file: `files/bedrock_${v}.apk`,
+      file: DOWNLOAD_LINKS[`bedrock_${v}`] || "#",
       image: `images/bedrock_${v}-main.jpg`
     };
   });
-  // Детали для популярных Bedrock
-  versionDb["bedrock_1.21.20"] = { title: "Minecraft Bedrock 1.21.20", desc: "Актуальный клиент для мобильных устройств. Синхронизация с Xbox, Realms и модами.", features: ["📱 Оптимизация батареи", "🎮 Геймпад", "🏆 Достижения", "🔄 Realms", "🔊 Новые звуки"], file: "files/bedrock_1.21.20.apk", image: "images/bedrock_1.21.20-main.jpg" };
+  if (versionDb["bedrock_1.21.20"]) {
+    versionDb["bedrock_1.21.20"] = { 
+      title: "Minecraft Bedrock 1.21.20", 
+      desc: "Актуальный клиент для мобильных устройств. Синхронизация с Xbox, Realms и модами.", 
+      features: ["📱 Оптимизация батареи", "🎮 Геймпад", "🏆 Достижения", "🔄 Realms", "🔊 Новые звуки"], 
+      file: DOWNLOAD_LINKS["bedrock_1.21.20"] || "#", 
+      image: "images/bedrock_1.21.20-main.jpg" 
+    };
+  }
 
   // -------------------------------------------------- State --------------------------------------------------
-  let currentMode = "desktop"; // desktop / mobile
+  let currentMode = "desktop";
   let currentVersionId = null;
 
   // DOM
@@ -467,7 +543,6 @@
       return `<div class="version-btn" data-version-id="${fullId}" data-version-name="${v}">📦 ${verData.title.substring(0, 28)}</div>`;
     }).join("");
     
-    // events
     document.querySelectorAll(".version-btn").forEach(btn => {
       btn.addEventListener("click", (e) => {
         const versionId = btn.getAttribute("data-version-id");
@@ -480,14 +555,12 @@
     const data = versionDb[versionId];
     if (!data) return;
     currentVersionId = versionId;
-    // заполнить
     detailVersionTitle.innerText = data.title;
     detailDescText.innerText = data.desc;
     detailFeaturesList.innerHTML = data.features.map(f => `<li>${f}</li>`).join("");
     downloadLinkBtn.href = data.file;
     downloadLinkBtn.innerText = `⬇ Скачать ${currentMode === "desktop" ? "JAR/ZIP" : "APK"}`;
   
-    // картинка
     detailImg.src = data.image;
     detailImg.style.display = "block";
     detailImg.onload = () => {
@@ -509,7 +582,7 @@
     if (isDesktop) {
       heroTag.innerText = "💻 Java Edition / ПК";
       heroTitle.innerText = "Minecraft Java Edition";
-      heroDesc.innerText = "Огромный выбор версий 1.16 → 1.21. Лицензионные сборки, моды, сервера. Скачивай архив и играй.";
+      heroDesc.innerText = "Огромный выбор версий 1.16 → 1.21. Лицензионные сборки, моды, сервера.";
       statVal1.innerText = "34+"; statDesc1.innerText = "Java-версий";
       statVal2.innerText = "Forge/Fabric"; statDesc2.innerText = "Моддинг";
       statVal3.innerText = "Быстро"; statDesc3.innerText = "Прямая загрузка";
@@ -519,7 +592,7 @@
     } else {
       heroTag.innerText = "📱 Bedrock / Pocket Edition";
       heroTitle.innerText = "Minecraft на телефон";
-      heroDesc.innerText = "Мобильная версия для Android / iOS. Полная кроссплатформа, маркетплейс и Realms. Играй с друзьями.";
+      heroDesc.innerText = "Мобильная версия для Android / iOS. Полная кроссплатформа, маркетплейс и Realms.";
       statVal1.innerText = "14+"; statDesc1.innerText = "Bedrock сборок";
       statVal2.innerText = "Кроссплей"; statDesc2.innerText = "ПК + консоль";
       statVal3.innerText = "APK / IPA"; statDesc3.innerText = "Установка";
@@ -527,9 +600,7 @@
       previewCountSpan.innerText = BEDROCK_VERSIONS.length;
       dynamicBadge.innerText = "📱 Мобильная оптимизация";
     }
-    // перерисовать список
     renderVersionsList();
-    // если детали открыты и режим сменился — закрыть детали
     if (!detailSection.classList.contains("hidden")) {
       detailSection.classList.add("hidden");
       listSection.classList.remove("hidden");
@@ -549,7 +620,6 @@
     updateHeroAndUI();
   }
   
-  // обработчики вкладок
   document.querySelectorAll(".device-tab").forEach(tab => {
     tab.addEventListener("click", (e) => {
       const mode = tab.innerText.includes("Компьютер") ? "desktop" : "mobile";
@@ -557,7 +627,6 @@
     });
   });
   
-  // закрытие деталей
   closeDetailBtns.forEach(btn => {
     btn.addEventListener("click", () => {
       detailSection.classList.add("hidden");
@@ -570,10 +639,8 @@
     listSection.scrollIntoView({ behavior: "smooth", block: "start" });
   });
   
-  // начальная загрузка
   setMode("desktop");
   
-  // дополнительно: поддержка прямой ссылки ?version=java_1.16.5
   const urlParams = new URLSearchParams(window.location.search);
   const directVersion = urlParams.get("version");
   if (directVersion && versionDb[directVersion]) {
@@ -582,14 +649,3 @@
 </script>
 </body>
 </html>
-<title>Minecraft versions: Скачать Java и Bedrock все версии | Бесплатно</title>
-<meta name="description" content="Скачивай любую версию Minecraft Java и Bedrock: 1.16.5, 1.20.6, 1.21.5. Подробные описания, скриншоты, гайды по установке. Быстро и бесплатно.">
-<meta name="keywords" content="скачать майнкрафт, minecraft версии, minecraft java скачать, minecraft 1.16.5, minecraft bedrock">
-<link rel="canonical" href="https://твой-сайт.ру/index.html">
-versionDb["java_1.16.1"] = {
-  title: "Minecraft 1.16.1 (Nether Update)",
-  desc: "...",
-  features: ["..."],
-  file: "https://drive.google.com/file/d/1cQCOUVP-dXNYMMzsdxLw6Yr7Jbxga5OX/view?usp=drive_link",  // прямая ссылка
-  image: "images/java_1.16.1-main.jpg"
-};
