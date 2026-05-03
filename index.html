@@ -103,8 +103,10 @@
 
   // Функция возвращает ссылку на файл в корне репозитория
   function getFileUrl(version, type) {
-    if (type === "java") return `java_${version}.zip`;
-    else return `bedrock_${version}.apk`;
+  function getFileUrl(version, type) {
+  if (type === "java") return `java_${version}.zip.jar`;
+  else return `bedrock_${version}.apk`;
+}
   }
 
   // ==================== ЛОГИКА ОТОБРАЖЕНИЯ ====================
